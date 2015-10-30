@@ -1,0 +1,250 @@
+#projectEchelon {
+    height: 100%;
+    margin: 0px;
+
+    /* for IE10+ touch devices */
+    touch-action:none;
+
+    .twelve.wide {
+        height: 100%;
+        padding: 0px;
+    }
+
+    #canvas-mask {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        opacity: 0.1;
+        filter: alpha(opacity=1);
+        background-color: white;
+        z-index: 20000;
+        // iOs fix
+        visibility: visible;
+    }
+
+    .alert {
+        z-index: 20001;
+        .close {
+            cursor: pointer;
+        }
+    }
+
+    .jtk-surface {
+        position: relative;
+        //overflow: scroll !important;
+        // Has we got perfectScrollBar now
+        overflow: hidden !important;
+        height: 100%;
+        background: url(/img/background_echelon.png) repeat local 0 0;
+
+        .ps-scrollbar-x-rail, .ps-scrollbar-y-rail {
+            z-index: 25000;
+        }
+
+        .echelon {
+            padding: 8px;
+            position: absolute;
+            z-index: 4;
+            border: 1px solid #2e6f9a;
+
+            -webkit-box-shadow: 2px 2px 19px #e0e0e0;
+               -moz-box-shadow: 2px 2px 19px #e0e0e0;
+                 -o-box-shadow: 2px 2px 19px #e0e0e0;
+                    box-shadow: 2px 2px 19px #e0e0e0;
+
+            opacity: 0.8;
+            filter: alpha(opacity=80);
+
+            cursor: pointer;
+            background-color: white;
+            font-size: 11px;
+
+            -webkit-transition: background-color 0.25s ease-in;
+               -moz-transition: background-color 0.25s ease-in;
+                 -o-transition: background-color 0.25s ease-in;
+                    transition: background-color 0.25s ease-in;
+
+            .inner {
+                background-color: #2e6f9a;
+                color: white;
+                padding: 20px;
+
+                -webkit-transition: background-color 0.25s ease-in;
+                   -moz-transition: background-color 0.25s ease-in;
+                     -o-transition: background-color 0.25s ease-in;
+                        transition: background-color 0.25s ease-in;
+            }
+
+            &:hover {
+                background-color: #c6dae7;
+                color: white;
+            }
+
+            &.begin, &.end {
+                -webkit-border-radius: 50%;
+                   -moz-border-radius: 50%;
+                     -o-border-radius: 50%;
+                        border-radius: 50%;
+
+                .inner {
+                    -webkit-border-radius: 50%;
+                       -moz-border-radius: 50%;
+                         -o-border-radius: 50%;
+                            border-radius: 50%;
+                }
+            }
+
+            &.begin {
+                border: 1px solid #369336;
+                .inner {
+                    background-color: #369336;
+                }
+                &:hover {
+                    background-color: #cae7c6;
+                }
+            }
+            &.end {
+                border: 1px solid #991c1c;
+                .inner {
+                    background-color: #991c1c;
+                }
+                &:hover {
+                    background-color: #e7c6c6;
+                }
+                .connector-creator {
+                    display: none;
+                }
+            }
+
+            .due {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                font-size: 0.8em;
+                background-color: #124664;
+                line-height: 12px;
+                padding: 1px 4px;
+                -webkit-border-bottom-left-radius: 2px !important;
+                   -moz-border-bottom-left-radius: 2px !important;
+                     -o-border-bottom-left-radius: 2px !important;
+                        border-bottom-left-radius: 2px !important;
+            }
+
+            .progress {
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                margin: 0px !important;
+                height: 3px !important;
+                -webkit-border-radius: 0px !important;
+                   -moz-border-radius: 0px !important;
+                     -o-border-radius: 0px !important;
+                        border-radius: 0px !important;
+
+                .bar {
+                    min-width: 0px !important;
+                    transition-duration: 300ms;
+                    height: 3px !important;
+                    -webkit-border-radius: 0px !important;
+                       -moz-border-radius: 0px !important;
+                         -o-border-radius: 0px !important;
+                            border-radius: 0px !important;
+                }
+            }
+
+            // When the echelon has a progress of 100%
+            &.prg100 {
+                border-color: #2e9a47;
+
+                &:hover {
+                    background-color: #c6e7cf;
+                }
+
+                .inner {
+                    background-color: #2e9a47;
+                }
+
+                .due {
+                    background-color: #12642d;
+                }
+            }
+        }
+
+        .aLabel {
+            display: none;
+        }
+
+        ._jsPlumb_source_hover, ._jsPlumb_target_hover {
+            background-color: #e47a33 !important;
+            color: white;
+            .inner {
+                background-color: #e9b491 !important;
+            }
+            .due {
+                background-color: #835013 !important;
+            }
+        }
+
+        .connector-view {
+            position: absolute;
+            bottom: 11px;
+            left: 50%;
+            margin-left: -16px;
+            font-size: 0.8em;
+            background-color: #fbbd08;
+            line-height: 10px;
+            padding: 3px 10px;
+            cursor: pointer;
+
+            -webkit-transition: background-color 0.25s ease-in;
+               -moz-transition: background-color 0.25s ease-in;
+                 -o-transition: background-color 0.25s ease-in;
+                    transition: background-color 0.25s ease-in;
+
+            -webkit-border-radius: 2px;
+               -moz-border-radius: 2px;
+                 -o-border-radius: 2px;
+                    border-radius: 2px;
+
+            &:hover {
+                background-color: #EAAE00;
+            }
+        }
+
+        .connector-creator {
+            position: absolute;
+            top: 50%;
+            margin-top: -5px;
+            width: 10px;
+            height: 10px;
+            right: 5px;
+            background-color: #b42424;
+            border: 1px solid #4298CC;
+            cursor: pointer;
+            -webkit-transition: -webkit-box-shadow 0.25s ease-in;
+               -moz-transition:    -moz-box-shadow 0.25s ease-in;
+                 -o-transition:      -o-box-shadow 0.25s ease-in;
+                    transition:         box-shadow 0.25s ease-in;
+
+            &:hover {
+                -webkit-box-shadow: 0px 0px 6px #124664;
+                   -moz-box-shadow: 0px 0px 6px #124664;
+                     -o-box-shadow: 0px 0px 6px #124664;
+                        box-shadow: 0px 0px 6px #124664;
+            }
+        }
+
+        ._jsPlumb_endpoint {
+            z-index: 3;
+        }
+
+        .dragHover {
+            border: 2px solid orange;
+        }
+
+        path, ._jsPlumb_endpoint { cursor:pointer; }
+    }
+}

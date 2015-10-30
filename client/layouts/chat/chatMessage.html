@@ -1,0 +1,8 @@
+<template name="chatMessage">
+    <div id="chat-message-{{_id}}" class="item message {{myselfOrOthers ownerId}} {{isUnseen unseenUsers}}" data-id="{{_id}}">
+        <img class="ui avatar image" src="http://www.gravatar.com/avatar/{{md5PrettyEmail owner}}?&s=40&d=identicon" alt="avatar" data-content="{{prettyUser owner}} ({{prettyOnline owner.status.online owner.status.idle}})" data-variation="inverted">
+        <div class="ui segment content">
+            <div class="description parse-emoticons">{{message}}</div>
+        </div>
+    </div>
+</template>

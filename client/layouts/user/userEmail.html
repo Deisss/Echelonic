@@ -1,0 +1,19 @@
+<template name="userEmail">
+    <div class="email">
+        <div class="ui corner labeled left action input fluid">
+            <div class="ui red button">
+                &times;
+            </div>
+            <input type="text" name="email" value="{{address}}" placeholder="Email..." data-verified="{{verified}}" />
+            {{#if verified}}
+                <div class="ui corner label teal" data-content="email is verified" data-variation="inverted">
+                    <i class="checkmark icon"></i>
+                </div>
+            {{else}}
+                <div class="ui corner label red" data-content="email is not verified, check your mailbox" data-variation="inverted">
+                    <i class="remove icon"></i>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</template>

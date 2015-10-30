@@ -1,0 +1,34 @@
+<template name="menuEchelon">
+    <div class="ui menu">
+        <div class="item">
+            <h1>{{echelon}}</h1>
+        </div>
+
+        <div class="right menu">
+            <div class="ui right aligned category search item">
+                <div class="ui transparent icon input">
+                    <input class="prompt" type="text" placeholder="Search..." />
+                    <i class="search link icon"></i>
+                </div>
+                <div class="results"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="ui breadcrumb">
+        <a class="section home">Home</a>
+        <i class="right angle icon divider"></i>
+        <a class="section project">{{project}}</a>
+        <i class="right angle icon divider"></i>
+        {{#if child}}
+            <a class="section echelon">{{echelon}}</a>
+            <i class="right angle icon divider"></i>
+            <div class="active section">{{child}}</div>
+        {{else}}
+            <div class="active section echelon">{{echelon}}</div>
+        {{/if}}
+    </div>
+
+    <div class="ui divider"></div>
+</template>

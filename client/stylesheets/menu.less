@@ -1,0 +1,479 @@
+.menuHome, .menuProject {
+    background-color: #4298CC;
+    color: white;
+    padding: 0px !important;
+
+    .logo {
+        cursor: pointer;
+        position: relative;
+
+        background: #124664;
+        -webkit-box-shadow: inset 0px -3px 5px 0px #0b344c;
+           -moz-box-shadow: inset 0px -3px 5px 0px #0b344c;
+             -o-box-shadow: inset 0px -3px 5px 0px #0b344c;
+                box-shadow: inset 0px -3px 5px 0px #0b344c;
+                    filter:progid:DXImageTransform.Microsoft.Shadow(color=#0b344c, Direction=90, Strength=5);
+
+        img {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        // Home, options & logout buttons
+        .button {
+            &.homeButton, &.settingsButton {
+                right: 5px;
+            }
+            &.logoutButton {
+                left: 30px;
+                top: 35px;
+            }
+        }
+        .button {
+            padding: 0px;
+            position: absolute;
+            background-color: transparent !important;
+
+            &.homeButton {
+                top: 15px;
+            }
+            &.settingsButton {
+                bottom: 10px;
+            }
+            &.logoutButton {
+                i {
+                    font-size: 50px !important;
+                }
+            }
+
+            i {
+                font-size: 25px;
+                color: #082b40;
+                -webkit-transition: color 250ms linear;
+                   -moz-transition: color 250ms linear;
+                    -ms-transition: color 250ms linear;
+                     -o-transition: color 250ms linear;
+                        transition: color 250ms linear;
+
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .title {
+        font-family: 'OPen Sans Condensed', Arial, Helvetica, sans-serif;
+        background: #175172;
+        padding: 14px 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+
+        -webkit-box-shadow: inset 0px -3px 5px 0px #113f5a;
+           -moz-box-shadow: inset 0px -3px 5px 0px #113f5a;
+             -o-box-shadow: inset 0px -3px 5px 0px #113f5a;
+                box-shadow: inset 0px -3px 5px 0px #113f5a;
+                    filter:progid:DXImageTransform.Microsoft.Shadow(color=#113f5a, Direction=90, Strength=5);
+    }
+}
+
+
+
+.menuHome {
+    .title {
+        position: relative;
+
+        & > div {
+            position: absolute;
+            top: 10px;
+            right: 0px;
+        }
+        .primary {
+            -webkit-box-shadow: inset 0px 0px 6px 3px #2c739f;
+               -moz-box-shadow: inset 0px 0px 6px 3px #2c739f;
+                 -o-box-shadow: inset 0px 0px 6px 3px #2c739f;
+                    box-shadow: inset 0px 0px 6px 3px #2c739f;
+                        filter:progid:DXImageTransform.Microsoft.Shadow(color=#2c739f, Direction=NaN, Strength=6);
+
+            background-color: #2d729c !important;
+            border: 1px solid #124664;
+            margin-right: 15px;
+
+            a {
+                color: white;
+            }
+        }
+    }
+
+    .project-list {
+        margin-top: 0px;
+
+        .category {
+            font-family: 'OPen Sans Condensed', Arial, Helvetica, sans-serif;
+            cursor: pointer;
+            background-color: #303030;
+            border: 1px solid #0b344c;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+        }
+        .item {
+            margin-left: 12px !important;
+            padding-left: 8px;
+            padding-top: 15px !important;
+            padding-bottom: 15px !important;
+            .ui.empty {
+                margin-right: 5px;
+            }
+            .content {
+                color: white;
+                font-size: 1.1em;
+            }
+        }
+        .header {
+            text-align: center;
+            padding: 8px 0px;
+        }
+        .selected {
+            box-shadow: inset 0px 0px 5px 2px #0d2f42;
+            background-color: #164662 !important;
+            font-weight: bold;
+        }
+        .feed {
+            margin-top: 0px;
+            font-size: 8px;
+            float: right;
+        }
+    }
+}
+
+.menuProject {
+    .menuEchelon {
+        &.ui.menu .item {
+            line-height: 24px !important;
+            display: inline-block !important;
+            width: 33.33%;
+            text-align: center;
+            background-color: #2b6d95 !important;
+            color: white;
+            border-top: 1px solid #0c3954;
+            border-left: 2px solid #0c3954;
+            border-bottom: 1px solid #0c3954;
+            padding-left: 2px;
+            padding-right: 2px;
+
+            &.active {
+                color: white;
+                font-weight: normal !important;
+                background-color: #185b83 !important;
+                -webkit-box-shadow: inset 1px 1px 5px 2px #123143;
+                   -moz-box-shadow: inset 1px 1px 5px 2px #123143;
+                     -o-box-shadow: inset 1px 1px 5px 2px #123143;
+                        box-shadow: inset 1px 1px 5px 2px #123143;
+                            filter:progid:DXImageTransform.Microsoft.Shadow(color=#123143, Direction=134, Strength=5);
+            }
+            &:hover {
+                color: white !important;
+                background-color: #225a7c !important;
+            }
+        }
+    }
+
+    // The user list
+    .users {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #226083;
+        border: 1px solid #0b344c;
+        border-top: 0px none;
+        -webkit-border-bottom-left-radius: 10px;
+           -moz-border-bottom-left-radius: 10px;
+             -o-border-bottom-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+        -webkit-border-bottom-right-radius: 10px;
+           -moz-border-bottom-right-radius: 10px;
+             -o-border-bottom-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+        -webkit-box-shadow: inset 0px -3px 5px 1px #185070;
+           -moz-box-shadow: inset 0px -3px 5px 1px #185070;
+             -o-box-shadow: inset 0px -3px 5px 1px #185070;
+                box-shadow: inset 0px -3px 5px 1px #185070;
+                    filter:progid:DXImageTransform.Microsoft.Shadow(color=#185070, Direction=90, Strength=5);
+
+        .user {
+            position: relative;
+            &.offline {border: 2px solid grey;}
+            &.online {border: 2px solid green;}
+            &.idle {border: 2px solid orange !important;}
+
+            .state {
+                position: absolute;
+                width: 12px;
+                height: 12px;
+                padding-top: 1px;
+                padding-left: 1px;
+                bottom: 0px;
+                right: 0px;
+
+                &.offline {background-color: grey;}
+                &.online {background-color: green;}
+                &.idle {background-color: orange !important;}
+
+                i {
+                    vertical-align: top;
+                    font-size: 0.7em;
+                    line-height: 1.1em;
+                    color: white !important;
+                }
+            }
+        }
+    }
+
+    .tab-chat {
+        padding: 0 20px;
+
+        .negative.message {
+            display: none;
+            margin: 0px;
+            -webkit-border-radius: 0px;
+               -moz-border-radius: 0px;
+                 -o-border-radius: 0px;
+                   -border-radius: 0px;
+
+            &.offline {
+                display: block;
+            }
+        }
+        .orange.message {
+            display: none;
+            margin: 0px;
+            -webkit-border-radius: 0px;
+               -moz-border-radius: 0px;
+                 -o-border-radius: 0px;
+                   -border-radius: 0px;
+
+            &.idle {
+                display: block;
+            }
+        }
+
+        .list {
+            min-height: 150px;
+            max-height: 400px;
+            overflow-y: hidden;
+            border-bottom: 0px none;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            background-color: #2b6d95;
+            padding: 0 10px;
+            position: relative;
+
+            -webkit-box-shadow: inset 0px 5px 5px 0px #17445e;
+               -moz-box-shadow: inset 0px 5px 5px 0px #17445e;
+                 -o-box-shadow: inset 0px 5px 5px 0px #17445e;
+                    box-shadow: inset 0px 5px 5px 0px #17445e;
+                        filter:progid:DXImageTransform.Microsoft.Shadow(color=#17445e, Direction=180, Strength=5);
+
+            .button {
+                margin-bottom: 10px;
+            }
+
+            .segment {
+                padding: 5px 7px !important;
+                margin: 0px !important;
+                max-width: 85%;
+                position: relative;
+
+                .description {
+                    line-height: 18px;
+                }
+            }
+
+            // In the myself view, we change few things...
+            .myself {
+                text-align: right;
+
+                img {
+                    display: none !important;
+                }
+
+                .segment {
+                    background-color: #d9ebf8;
+                    margin-right: 10px !important;
+
+                    // Little "chat mark"
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        border-style: solid;
+                        border-width: 5px 0 5px 8px;
+                        border-color: transparent #d9ebf8;
+                        display: block;
+                        width: 0;
+                        z-index: 1;
+                        right: -8px;
+                        top: 5px;
+                    }
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        border-style: solid;
+                        border-width: 5px 0 5px 8px;
+                        border-color: transparent #587F7F;
+                        display: block;
+                        width: 0;
+                        z-index: 0;
+                        right: -9px;
+                        top: 5px;
+                    }
+                }
+
+            }
+
+            // Other people talking
+            .others {
+                // The unseen got a special color
+                &.unseen {
+                    .segment {
+                        background-color: #f8ead9;
+
+                        &:after {
+                            border-color: transparent #f8ead9 !important;
+                        }
+                    }
+                }
+
+                .segment {
+                    margin-left: 10px !important;
+                    -webkit-transition: background-color 1000ms linear;
+                       -moz-transition: background-color 1000ms linear;
+                         -o-transition: background-color 1000ms linear;
+                        -ms-transition: background-color 1000ms linear;
+                            transition: background-color 1000ms linear;
+
+                    // Little "chat mark"
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        border-style: solid;
+                        border-width: 4px 8px 8px 0;
+                        border-color: transparent rgba(34, 36, 38, 0.15);
+                        display: block;
+                        width: 0;
+                        z-index: 0;
+                        left: -9px;
+                        top: 5px;
+                    }
+                    &:after {
+                        -webkit-transition: border 1000ms linear;
+                           -moz-transition: border 1000ms linear;
+                             -o-transition: border 1000ms linear;
+                            -ms-transition: border 1000ms linear;
+                                transition: border 1000ms linear;
+                        content: '';
+                        position: absolute;
+                        border-style: solid;
+                        border-width: 5px 8px 5px 0;
+                        border-color: transparent #FFFFFF;
+                        display: block;
+                        width: 0;
+                        z-index: 1;
+                        left: -8px;
+                        top: 5px;
+                    }
+                }
+            }
+        }
+        .ui.action {
+            width: 100%;
+
+            i {
+                margin: 0px;
+            }
+
+            input {
+                min-width: 50px;
+                flex: auto;
+                -webkit-border-radius: 0px;
+                   -moz-border-radius: 0px;
+                     -o-border-radius: 0px;
+                        border-radius: 0px;
+            }
+            button {
+                -webkit-border-radius: 0px !important;
+                   -moz-border-radius: 0px !important;
+                     -o-border-radius: 0px !important;
+                        border-radius: 0px !important;
+            }
+        }
+    }
+
+    .tab-activity {
+        .activity {
+            padding-left: 10px;
+            padding-right: 10px;
+            position: relative;
+
+            .description {
+                color: white;
+            }
+            .date {
+                color: #DDD;
+            }
+            .link {
+                position: absolute;
+                right: 10px;
+                color: white;
+                top: 50%;
+                margin-top: -0.5em;
+
+                visibility: hidden;
+                opacity: 0;
+                filter: alpha(opacity=0);
+                -webkit-transition: opacity 0.5s linear;
+                   -moz-transition: opacity 0.5s linear;
+                     -o-transition: opacity 0.5s linear;
+                        transition: opacity 0.5s linear;
+            }
+
+            &.unseen {
+                background-color: #15557c;
+            }
+            &:hover {
+                &.unseen {
+                    background-color: #15557c !important;
+                }
+                .link {
+                    visibility: visible;
+                    opacity: 1;
+                    filter: alpha(opacity=1);
+                }
+            }
+        }
+    }
+
+    .tab-property {
+        padding: 0 20px;
+
+        label {
+            color: white !important;
+        }
+        .segment {
+            color: black !important;
+        }
+        .ribbon {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+
+#echelonOverview, #tasksOverview, #taskSee, #pollsOverview, #filesOverview {
+    .menuEchelon {
+        &.ui.menu .item {
+            width: 50%;
+        }
+    }
+}

@@ -1,0 +1,141 @@
+<template name="accountSettings">
+    <div id="accountSettings" class="ui grid">
+        {{> menuHome projects=projects }}
+
+        <!-- content -->
+        <div class="twelve wide column contentMenuShadow">
+            <h1>My account</h1>
+            <form class="ui form">
+                <div class="avatar">
+                    <img class="ui medium rounded left floated image" src="http://www.gravatar.com/avatar/{{md5PrettyEmail .}}?&s=150&d=identicon" alt="avatar">
+                </div>
+
+                <div class="content">
+
+
+                    <a class="ui blue ribbon label bottom">Profile</a>
+                    <div class="field">
+                        <label>First Name</label>
+                        <input name="firstname" value="{{user.profile.firstname}}" placeholder="Firstname">
+                    </div>
+                    <div class="field">
+                        <label>Last Name</label>
+                        <input name="lastname" value="{{user.profile.lastname}}" placeholder="Lastname">
+                    </div>
+
+
+
+
+                    <a class="ui blue ribbon label top">Password</a>
+                    <div class="ui stackable grid passwordFields">
+                        <div class="six wide column">
+                            <div class="ui input fluid">
+                                <input type="password" name="oldPassword" placeholder="Current password..." value="" />
+                            </div>
+                        </div>
+                        <div class="six wide column">
+                            <div class="ui input fluid">
+                                <input type="password" name="newPassword" placeholder="New password..." value="" />
+                            </div>
+                        </div>
+                        <div class="four wide column">
+                            <div class="ui button primary fluid passwordUpdate">
+                                Update password
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- emails -->
+                    <h4 class="ui ribbon blue label top">Emails</h4>
+                    <div class="ui two column stackable grid emailFields">
+                        {{#each user.emails}}
+                            <div class="column">
+                                {{> userEmail }}
+                            </div>
+                        {{/each}}
+                    </div>
+                    <div class="text-right">
+                        <a class="addEmail">+ Add email</a>
+                    </div>
+
+
+
+
+                    <!-- Save/valid -->
+                    <div class="text-right submit">
+                        <div class="ui buttons">
+                            <button class="ui cancel button">Cancel</button>
+                            <div class="or"></div>
+                            <button class="ui positive save button">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- password success/error -->
+    <div id="modal-success-change-password" class="ui small modal">
+        <div class="header">
+            Success
+        </div>
+        <div class="content">
+            <p>The password has been changed.</p>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                OK
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+    <div id="modal-error-change-password" class="ui small modal">
+        <div class="header">
+            Error
+        </div>
+        <div class="content">
+            <p>The password could not be changed.</p>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                OK
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- error no email to update account -->
+    <div id="modal-error-no-email" class="ui small modal">
+        <div class="header">
+            Error
+        </div>
+        <div class="content">
+            <p>You must have at least one valid email...</p>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                OK
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- success from server -->
+    <div id="modal-success-settings" class="ui small modal">
+        <div class="header">
+            Success
+        </div>
+        <div class="content">
+            <p>Your account modifications have been saved.</p>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                OK
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+</template>

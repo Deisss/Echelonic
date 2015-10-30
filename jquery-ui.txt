@@ -1,0 +1,1 @@
+This version of jquery UI does not support widgets and effects.

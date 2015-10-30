@@ -1,0 +1,22 @@
+<template name="echelonBloc">
+    <div class="jtk-node echelon {{#if statistics.tasks.progress}}prg{{statistics.tasks.progress}}{{/if}} {{#if isBegin .}}begin{{/if}} {{#if isEnd .}}end{{/if}}" id="echelon-{{_id}}" data-id="{{_id}}" style="top: {{top}}px;left: {{left}}px">
+        <div class="inner">
+            {{#unless isBeginOrEnd .}}
+                {{#if hasTasksStatistics .}}
+                    <div class="due" data-content="Tasks done / Total tasks" data-variation="inverted">{{statistics.tasks.done}}/{{statistics.tasks.total}}</div>
+                {{/if}}
+
+                {{title}}
+
+                <div class="connector-view">GO</div>
+
+                {{#if hasTasksStatistics .}}
+                    <div class="ui tiny progress green" data-percent="{{statistics.tasks.progress}}" data-content="Progression: {{statistics.tasks.progress}}%" data-variation="inverted">
+                        <div class="bar" style="transition-duration: 300ms; -webkit-transition-duration: 300ms; width: {{statistics.tasks.progress}}%;"></div>
+                    </div>
+                {{/if}}
+            {{/unless}}
+            <div class="connector-creator"></div>
+        </div>
+    </div>
+</template>

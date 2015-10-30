@@ -1,0 +1,15 @@
+<template name="activityTypeEditEchelon">
+    {{#if notificationsUniqueCount 1}}
+        {{#if notificationsCount 1}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong> has modified an echelon.
+        {{else}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong> has modified {{notifications.length}} echelons.
+        {{/if}}
+    {{else}}
+        {{#if notificationsUniqueCount 2}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong> and <strong>{{prettyUser getSecondUniqueUser}}</strong> have modified {{notifications.length}} echelons.
+        {{else}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong>, <strong>{{prettyUser getSecondUniqueUser}}</strong> and {{notificationsUniqueCounter 2}} others have modified {{notifications.length}} echelons.
+        {{/if}}
+    {{/if}}
+</template>

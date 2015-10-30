@@ -1,0 +1,13 @@
+<template name="activityTab">
+    <div class="ui tab tab-activity {{#if isActive}}active{{/if}}" data-tab="activity">
+        <div class="ui middle aligned divided selection list">
+            {{#each activities}}
+                {{> activityMessage }}
+            {{else}}
+                <div class="text-center">
+                    No activity to show.
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>

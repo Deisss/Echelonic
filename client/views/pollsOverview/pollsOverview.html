@@ -1,0 +1,13 @@
+<template name="pollsOverview">
+    <div id="pollsOverview" class="ui grid">
+        {{> menuProject project=project showActivities=1 showChat=1 }}
+
+        <!-- content -->
+        <div class="twelve wide column contentMenuShadow">
+            {{> menuEchelon project=project.title echelon=echelon.title child="Polls" }}
+            <!-- TODO: do search -->
+
+
+        </div>
+    </div>
+</template>

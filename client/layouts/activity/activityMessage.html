@@ -1,0 +1,24 @@
+<template name="activityMessage">
+    <div id="activity-message-{{_id}}" class="activityMessage item activity {{#if unseen}}unseen{{/if}}" data-id="{{_id}}">
+        <!-- TODO: use activity.getFirstUser to get first usable user and display it's avatar... -->
+        <img class="ui avatar image" src="http://www.gravatar.com/avatar/de0d1695fb39aab36df7a7c0d97e639e?&s=36&d=identicon" alt="avatar">
+        <div class="content">
+            <div class="description">
+                {{#with typeAsObject type}}
+                    {{> UI.dynamic template=getTemplate data=..}}
+                {{/with}}
+            </div>
+            <small class="date">
+                <i class="{{icon}} icon"></i>
+                {{#if updatedAt}}
+                    {{momentNow updatedAt}}
+                {{else}}
+                    {{momentNow createdAt}}
+                {{/if}}
+            </small>
+        </div>
+        <div class="link">
+            <i class="external icon"></i>
+        </div>
+    </div>
+</template>

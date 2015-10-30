@@ -1,0 +1,34 @@
+<template name="chatTab">
+    <div class="ui tab tab-chat {{#if isActive}}active{{/if}}" data-tab="chat">
+        <!-- User offline: add "offline" class to see it -->
+        <div class="ui negative message">
+            <div class="header">
+                Currently offline
+            </div>
+        </div>
+        <!-- User IDLE: add "idle" class to see it -->
+        <div class="ui orange message">
+            <div class="header">
+                Currently busy
+            </div>
+        </div>
+
+        <!-- messages list -->
+        <div class="ui list" style="box-shadow: inset 0px 5px 5px 0px #17445e;">
+            <button class="fluid ui button primary">
+                Load more
+            </button>
+            {{#each messages}}
+                {{> chatMessage }}
+            {{/each}}
+        </div>
+
+        <!-- command -->
+        <div class="ui action input">
+            <input type="text" placeholder="Message..." maxlength="2048">
+            <button class="ui button orange" data-content="Send message" data-variation="inverted">
+                <i class="send outline icon"></i>
+            </button>
+        </div>
+    </div>
+</template>

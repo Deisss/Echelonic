@@ -1,0 +1,56 @@
+<template name="projectEchelon">
+    <div id="projectEchelon" class="ui grid">
+        {{> menuProject project=project showActivities=1 showChat=1 showProperties=1 }}
+
+        <!-- Graphic -->
+        <div class="twelve wide column contentMenuShadow">
+            <div class="canvas canvas-wide jtk-surface jtk-surface-nopan" id="canvas-echelons">
+                {{#each echelons}}
+                    {{> echelonBloc }}
+                {{/each}}
+            </div>
+
+            <!-- mask for avoiding user to change graphic -->
+            {{#unless project.isAdmin}}
+                <div class="jtk-mask" id="canvas-mask" tabindex="200">
+                </div>
+                <div class="bottom alert alert-error alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    Only administrators can edit this document.
+                </div>
+            {{/unless}}
+        </div>
+    </div>
+
+    <!-- project title is not set -->
+    <div id="modal-max-connections" class="ui small modal">
+        <div class="header">
+            Error
+        </div>
+        <div class="content">
+            <p>You cannot connect to this node: you've reached the maximum of connections available for this node.</p>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                OK
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- user is trying to create a cycle -->
+    <div id="modal-toposort-cycle" class="ui small modal">
+        <div class="header">
+            Error
+        </div>
+        <div class="content">
+            <p>You cannot connect those two node: it will create a cycle (loop) and is not allowed.</p>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                OK
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+</template>

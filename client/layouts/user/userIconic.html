@@ -1,0 +1,8 @@
+<template name="userIconic">
+    <a data-id="{{_id}}" data-email="{{prettyEmail .}}" class="ui image draggable user {{prettyOnline status.online status.idle}}" data-content="{{prettyUser .}} ({{prettyOnline status.online status.idle}})" data-variation="inverted">
+        <img src="http://www.gravatar.com/avatar/{{md5PrettyEmail .}}?&s=40&d=identicon" alt="avatar">
+        <div class="state {{prettyOnline status.online status.idle}}">
+            <i class="{{iconOnline status.online status.idle}} icon"></i>
+        </div>
+    </a>
+</template>

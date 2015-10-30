@@ -1,0 +1,15 @@
+<template name="activityTypeAddTask">
+    {{#if notificationsUniqueCount 1}}
+        {{#if notificationsCount 1}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong> has created a new task.
+        {{else}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong> has created {{notifications.length}} new tasks.
+        {{/if}}
+    {{else}}
+        {{#if notificationsUniqueCount 2}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong> and <strong>{{prettyUser getSecondUniqueUser}}</strong> have created {{notifications.length}} new tasks.
+        {{else}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong>, <strong>{{prettyUser getSecondUniqueUser}}</strong> and {{notificationsUniqueCounter 2}} others have created {{notifications.length}} new tasks.
+        {{/if}}
+    {{/if}}
+</template>

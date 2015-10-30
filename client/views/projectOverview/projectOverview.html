@@ -1,0 +1,88 @@
+<template name="projectOverview">
+    <div id="projectOverview" class="ui grid">
+        {{> menuHome projects=projects }}
+
+        <!-- content -->
+        <div class="twelve wide column contentMenuShadow">
+            <h1>{{project.title}}</h1>
+
+            <div class="ui internally celled grid">
+                <!-- users -->
+                <div class="eight wide column">
+                    <h4 class="ui horizontal divider header">
+                        <i class="lab icon"></i>
+                        Actions
+                    </h4>
+                    <div class="actions">
+                        <button class="ui button primary">
+                            Access
+                        </button>
+
+                        <button class="ui button red">
+                            Delete
+                        </button>
+                        <button class="ui button orange">
+                            Edit
+                        </button>
+                    </div>
+
+                    <h4 class="ui horizontal divider header">
+                        <i class="user icon"></i>
+                        Administrators
+                    </h4>
+                    {{#each project.administrators}}
+                        {{> userDraggable }}
+                    {{/each}}
+
+                    <h4 class="ui horizontal divider header">
+                        <i class="users icon"></i>
+                        Contributors
+                    </h4>
+                    {{#each project.contributors}}
+                        {{> userDraggable }}
+                    {{/each}}
+                </div>
+
+
+                <!-- activities -->
+                <div class="eight wide column">
+                    <h4 class="ui horizontal divider header">
+                        <i class="newspaper icon"></i>
+                        Latest Activities
+                    </h4>
+
+                    <div class="ui middle aligned selection divided list activities">
+                        {{#each activities}}
+                            {{> activityMessage }}
+                        {{else}}
+                            <p class="text-center">
+                                You don't have any activity, why not create <a href="/project/{{project._id}}/echelon">something</a> ?
+                            </p>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <!-- Confirmation delete -->
+    <div id="modal-delete-project" class="ui small modal">
+        <div class="header">
+            Confirmation
+        </div>
+        <div class="content">
+            <p>Are you sure you want to delete "{{project.title}}"?</p>
+        </div>
+        <div class="actions">
+            <div class="ui negative button">
+                No
+            </div>
+            <div class="ui positive right labeled icon button">
+                Yes
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+</template>

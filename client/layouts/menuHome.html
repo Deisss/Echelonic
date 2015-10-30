@@ -1,0 +1,46 @@
+<template name="menuHome">
+    <div class="four wide column menuHome">
+        {{> subMenuLogo}}
+
+
+        <h2 class="text-center title">
+            Your projects
+            {{#unless hideCreateButton}}
+                <div>
+                    <div class="create ui vertical animated button primary" tabindex="0">
+                        <div class="visible content">
+                            <i class="plus icon"></i>
+                        </div>
+                        <div class="hidden content">
+                            Add
+                        </div>
+                    </div>
+                </div>
+            {{/unless}}
+        </h2>
+
+        <!-- project list -->
+        <div class="ui middle aligned divided selection list project-list">
+            {{#each categories}}
+                <div class="category" data-collapse="false">
+                    <div class="content">
+                        <div class="header">{{category}}</div>
+                    </div>
+                </div>
+
+                {{#each projects}}
+                    <div class="item {{#if isProjectSelected _id}}selected{{/if}}" data-id="{{_id}}">
+                        <div class="content">
+                            <div class="ui {{color}} empty circular label"></div>
+                            {{title}}
+                            <!-- We print the missing field, only if there is one or more feed missed by user -->
+                            {{#if projects.missingFeed.count}}
+                                <div class="ui red label feed">{{projects.missingFeed.count}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/each}}
+            {{/each}}
+        </div>
+    </div>
+</template>

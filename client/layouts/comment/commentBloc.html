@@ -1,0 +1,35 @@
+<template name="commentBloc">
+    <div class="commentBloc">
+        {{#if hasMoreComments comments}}
+            <a class="loadMore">There is {{getLimitCount comments 50}} more comments</a>
+        {{/if}}
+        <div class="ui comments">
+            {{#each comments}}
+                {{> commentMessage }}
+            {{/each}}
+        </div>
+        <div class="ui fluid labeled input mainComment">
+            <div class="ui label">
+                <img src="http://www.gravatar.com/avatar/{{md5MyselfPrettyEmail}}?&s=38&d=identicon" alt="you" />
+            </div>
+            <input type="text" placeholder="Comment..." />
+        </div>
+
+
+        <!-- Error comment empty -->
+        <div id="modal-comment-empty" class="ui small modal">
+            <div class="header">
+                Error
+            </div>
+            <div class="content">
+                <p>You must provide a sentence for the comment.</p>
+            </div>
+            <div class="actions">
+                <div class="ui positive right labeled icon button">
+                    OK
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

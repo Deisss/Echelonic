@@ -1,0 +1,67 @@
+<template name="commentMessage">
+    <div class="comment commentMessage">
+        <a class="avatar">
+            <img src="http://www.gravatar.com/avatar/{{md5OtherPrettyEmail ownerId}}?&s=50&d=identicon" alt="avatar">
+        </a>
+        <div class="content">
+            <a class="author">{{prettyFindUser ownerId}}</a>
+            <div class="metadata">
+                <span class="date">{{momentNow createdAt}}</span>
+            </div>
+            <div class="text">
+                {{{markdown comment}}}
+            </div>
+            <div class="actions">
+                <a class="like" data-id="{{_id}}">
+                    {{likes.length}}
+                    <i class="thumbs outline up icon {{#if isLike likes}}green{{/if}}"></i>
+                </a>
+                <a class="dislike" data-id="{{_id}}">
+                    {{dislikes.length}}
+                    <i class="thumbs outline down icon {{#if isDislike dislikes}}red{{/if}}"></i>
+                </a>
+                {{#unless isChildren}}
+                    <a class="reply">Reply</a>
+                {{/unless}}
+            </div>
+        </div>
+
+        {{#if children}}
+            <div class="ui comments">
+                {{#if hasTooManyChildren _id children}}
+                    <a class="loadMoreComments" data-id="{{_id}}">There is {{leftChildren _id children}} more comments</a>
+                    {{#each limitLastChildren _id children}}
+                        {{addIsChildren .}}
+                        {{> commentMessage }}
+                    {{/each}}
+                {{else}}
+                    {{#each children}}
+                        {{addIsChildren .}}
+                        {{> commentMessage }}
+                    {{/each}}
+                {{/if}}
+
+                <div class="revealComment">
+                    <a class="link">Write a comment...</a>
+                    <div class="ui fluid labeled input">
+                        <div class="ui label">
+                            <img src="http://www.gravatar.com/avatar/{{md5MyselfPrettyEmail}}?&s=38&d=identicon" alt="you" />
+                        </div>
+                        <input type="text" placeholder="Comment..." data-id="{{_id}}" />
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            {{#unless isChildren}}
+                <div class="revealComment">
+                    <div class="ui fluid labeled input">
+                        <div class="ui label">
+                            <img src="http://www.gravatar.com/avatar/{{md5MyselfPrettyEmail}}?&s=38&d=identicon" alt="you" />
+                        </div>
+                        <input type="text" placeholder="Comment..." data-id="{{_id}}" />
+                    </div>
+                </div>
+            {{/unless}}
+        {{/if}}
+    </div>
+</template>

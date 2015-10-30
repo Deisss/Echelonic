@@ -1,0 +1,9 @@
+<template name="chartDoughnut">
+    <div class="chartDoughnut canvasContainer" style="height: {{autoSize height}}px; width: {{autoSize width}}px">
+        <div class="canvasText">
+            {{prettyProgress progress}}%
+        </div>
+        <canvas class="canvas" height="{{autoSize height}}" width="{{autoSize width}}"></canvas>
+        {{drawChart series}}
+    </div>
+</template>

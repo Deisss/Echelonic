@@ -1,0 +1,109 @@
+<template name="echelonOverview">
+    <div id="echelonOverview" class="ui grid">
+        {{> menuProject project=project showActivities=1 showChat=1 }}
+
+        <!-- content -->
+        <div class="twelve wide column contentMenuShadow">
+            {{> menuEchelon project=project.title echelon=echelon.title }}
+
+            <div class="overview">
+                <div class="ui two column stackable grid">
+                    <!-- Statistics -->
+                    <div class="ui wide column">
+                        <h4 class="ui horizontal divider header">
+                            <i class="line chart icon"></i>
+                            Statistics
+                        </h4>
+
+                        <div class="statisticsTasks">
+                            {{> chartDoughnut progress=echelon.statistics.tasks.progress series=echelon.chart }}
+                        </div>
+                        <div>&nbsp;</div>
+                        <div class="text-center">
+                            <div class="ui relaxed horizontal list">
+                                <div class="item">
+                                    <a class="ui circular empty red label image"></a>
+                                    <div class="content">
+                                        Waiting
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <a class="ui circular empty yellow label image"></a>
+                                    <div class="content">
+                                        Unfinished
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <a class="ui circular empty teal label image" style="padding-left: 8px !important; padding-right: 8px !important"></a>
+                                    <div class="content">
+                                        Done
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latest tasks -->
+                    <div class="ui wide column">
+                        <h4 class="ui horizontal divider header">
+                            <i class="tasks icon"></i>
+                            Today's tasks
+                        </h4>
+
+                        <div class="ui divided selection list">
+                            {{#each tasks}}
+                                {{> taskMessage }}
+                            {{else}}
+                                No tasks for today.
+                            {{/each}}
+                        </div>
+
+                        <div class="text-right">
+                            <button class="ui button primary goTasks">See more</button>
+                        </div>
+                    </div>
+
+                    <!-- Latest polls -->
+                    <div class="ui wide column">
+                        <h4 class="ui horizontal divider header">
+                            <i class="announcement icon"></i>
+                            Latest polls
+                        </h4>
+
+                        <div class="ui divided selection list">
+                            {{#each polls}}
+                                {{> pollMessage }}
+                            {{else}}
+                                No poll waiting.
+                            {{/each}}
+                        </div>
+
+                        <div class="text-right">
+                            <button class="ui button primary goPolls">See more</button>
+                        </div>
+                    </div>
+
+                    <!-- Latest files -->
+                    <div class="ui wide column">
+                        <h4 class="ui horizontal divider header">
+                            <i class="file text outline icon"></i>
+                            Latest files
+                        </h4>
+
+                        <div class="ui divided selection list">
+                            {{#each files}}
+                                {{> fileMessage }}
+                            {{else}}
+                                No files.
+                            {{/each}}
+                        </div>
+
+                        <div class="text-right">
+                            <button class="ui button primary goFiles">See more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

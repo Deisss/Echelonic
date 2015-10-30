@@ -1,0 +1,7 @@
+<!-- note: dont forget to update projectCreate and projectEdit with the owner value also -->
+<template name="userDraggable">
+    <a data-id="{{_id}}" data-email="{{prettyEmail .}}" class="ui image label draggable user">
+        <img src="http://www.gravatar.com/avatar/{{md5PrettyEmail .}}?&s=26&d=identicon" alt="avatar">
+        {{prettyUser .}}
+    </a>
+</template>

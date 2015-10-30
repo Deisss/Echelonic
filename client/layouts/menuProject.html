@@ -1,0 +1,53 @@
+<template name="menuProject">
+    <div class="four wide column menuProject">
+        {{> subMenuLogo}}
+
+        <h2 class="text-center title">{{project.title}}</h2>
+
+        <div class="text-center">
+            <div class="users">
+                {{#each project.administrators}}
+                    {{> userIconic }}
+                {{/each}}
+                {{#each project.contributors}}
+                    {{> userIconic }}
+                {{/each}}
+            </div>
+        </div>
+
+
+        <!-- TAB menu -->
+        <div class="ui pointing secondary menu menuEchelon">
+            {{#if showActivities}}
+                <a class="item active" data-tab="activity">Activity <div class="ui red label"><small>{{getLimitCount 'projectUnseenActivities'}}</small></div></a>
+            {{/if}}
+            {{#if showChat}}
+                <a class="item" data-tab="chat">Chat <div class="ui red label"><small>{{getLimitCount 'projectUnseenMessages'}}</small></div></a>
+            {{/if}}
+            {{#if showProperties}}
+                <a class="item" data-tab="properties">Properties</a>
+            {{/if}}
+        </div>
+
+        <!-- TAB content -->
+
+        <!-- activity -->
+        {{#if showActivities}}
+            {{> activityTab isActive=true }}
+        {{/if}}
+
+        <!-- chat -->
+        {{#if showChat}}
+            {{> chatTab }}
+        {{/if}}
+
+        <!-- property -->
+        {{#if showProperties}}
+            <div class="ui tab tab-property" data-tab="properties">
+                <div class="text-center">
+                    Select an echelon to see it's properties.
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>

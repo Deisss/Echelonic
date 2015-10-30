@@ -1,0 +1,15 @@
+<template name="activityTypeAddTaskComment">
+    {{#if notificationsUniqueCount 1}}
+        {{#if notificationsCount 1}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong> has commented a task.
+        {{else}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong> has commented {{notifications.length}} times on a task.
+        {{/if}}
+    {{else}}
+        {{#if notificationsUniqueCount 2}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong> and <strong>{{prettyUser getSecondUniqueUser}}</strong> have commented {{notifications.length}} times on a task.
+        {{else}}
+            <strong>{{prettyUser getFirstUniqueUser}}</strong>, <strong>{{prettyUser getSecondUniqueUser}}</strong> and {{notificationsUniqueCounter 2}} others have commented {{notifications.length}} times on a task.
+        {{/if}}
+    {{/if}}
+</template>

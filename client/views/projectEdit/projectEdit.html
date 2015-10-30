@@ -1,0 +1,184 @@
+<template name="projectEdit">
+    <div id="projectEdit" class="ui grid">
+        {{> menuHome projects=projects }}
+
+        <div class="twelve wide contentMenuShadow">
+            <form class="ui form">
+                <h2 class="ui dividing header">Overview</h2>
+
+                <div class="field">
+                    <label>Title</label>
+                    <input name="title" placeholder="Project title..." type="text" value="{{project.title}}">
+                </div>
+                <div class="field">
+                    <label>Color & Category (optional)</label>
+                    <div class="ui labeled input">
+                        <div id='dropdown-color' class="ui dropdown label">
+                            <div class="text">
+                                    {{#if existsColor project.color}}
+                                        <div class="ui {{project.color}} empty circular label"></div>
+                                    {{/if}}
+                                    {{prettyColor project.color}}
+                            </div>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="item">
+                                    <div class="ui red empty circular label"></div>
+                                    red
+                                </div>
+                                <div class="item">
+                                    <div class="ui orange empty circular label"></div>
+                                    orange
+                                </div>
+                                <div class="item">
+                                    <div class="ui yellow empty circular label"></div>
+                                    yellow
+                                </div>
+                                <div class="item">
+                                    <div class="ui olive empty circular label"></div>
+                                    olive
+                                </div>
+                                <div class="item">
+                                    <div class="ui green empty circular label"></div>
+                                    green
+                                </div>
+                                <div class="item">
+                                    <div class="ui teal empty circular label"></div>
+                                    teal
+                                </div>
+                                <div class="item">
+                                    <div class="ui blue empty circular label"></div>
+                                    blue
+                                </div>
+                                <div class="item">
+                                    <div class="ui violet empty circular label"></div>
+                                    violet
+                                </div>
+                                <div class="item">
+                                    <div class="ui purple empty circular label"></div>
+                                    purple
+                                </div>
+                                <div class="item">
+                                    <div class="ui pink empty circular label"></div>
+                                    pink
+                                </div>
+                                <div class="item">
+                                    <div class="ui brown empty circular label"></div>
+                                    brown
+                                </div>
+                                <div class="item">
+                                    <div class="ui grey empty circular label"></div>
+                                    grey
+                                </div>
+                            </div>
+                        </div>
+                        <input name="category" placeholder="Project category..." type="text" value="{{project.category}}">
+                    </div>
+                </div>
+
+
+                <h2 class="ui dividing header">Users</h2>
+
+                <div class="ui three column internally celled grid">
+                    <!-- Available users -->
+                    <div class="column">
+                        <h3>Available users</h3>
+
+                        <div class="ui action input">
+                            <input  class="invite-user" placeholder="User email..." type="text">
+                            <button class="invite-user ui button">Invite</button>
+                        </div>
+
+                        <div id="drop-waiting" class="droppable">
+                            {{#each globalUsers}}
+                                {{> userDraggable }}
+                            {{/each}}
+                        </div>
+                    </div>
+
+                    <!-- Selected administrators -->
+                    <div class="column">
+                        <h3>administrators</h3>
+
+                        <div id="drop-admins" class="droppable">
+                            {{#each project.administrators}}
+                                {{> userDraggable }}
+                            {{/each}}
+                        </div>
+                    </div>
+
+                    <!-- Selected users -->
+                    <div class="column">
+                        <h3>users</h3>
+
+                        <div id="drop-users" class="droppable">
+                            {{#each project.contributors}}
+                                {{> userDraggable }}
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save/valid -->
+                <div class="text-right submit">
+                    <div class="ui buttons">
+                        <button class="ui cancel button">Cancel</button>
+                        <div class="or"></div>
+                        <button class="ui positive button">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <!-- email is empty -->
+    <div id="modal-empty-email" class="ui small modal">
+        <div class="header">
+            Error
+        </div>
+        <div class="content">
+            <p>You need to specify an email address before inviting someone.</p>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                OK
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- email already listed in existing emails -->
+    <div id="modal-exists-email" class="ui small modal">
+        <div class="header">
+            Error
+        </div>
+        <div class="content">
+            <p>The given email is already in your list.</p>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                OK
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- project title is not set -->
+    <div id="modal-empty-title" class="ui small modal">
+        <div class="header">
+            Error
+        </div>
+        <div class="content">
+            <p>You need to specify a title for your project.</p>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                OK
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+</template>

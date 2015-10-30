@@ -1,0 +1,56 @@
+<template name="echelonBeginProperty">
+    <div class="echelonBeginProperty">
+        <div class="ui segment">
+            <a class="ui green ribbon label">Informations</a>
+            <br />
+            This echelon represent the beginning of your project.
+            <br />
+            The start date is the start date for the whole project.
+        </div>
+
+        <div class="ui list">
+            <div class="item">
+                <div class="ui two column grid">
+                    <div class="column">
+                        <i class="history icon"></i>
+                        Start date:
+                    </div>
+                    <div class="column text-right">
+                        <strong>{{realDate beginAt}} ({{momentNow beginAt}})</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{#if project.isAdmin}}
+            <form class="ui form">
+                <div class="field">
+                    <label>Start date</label>
+                    <input id="datepicker" name="beginAt" value="{{realDate beginAt}}" />
+                </div>
+
+                <div class="text-right">
+                    <button class="ui button orange" role="submit">Update</button>
+                </div>
+            </form>
+
+
+            <!-- Modal -->
+            <!-- wrong date -->
+            <div id="modal-wrong-date" class="ui small modal">
+                <div class="header">
+                    Error
+                </div>
+                <div class="content">
+                    <p>The date you entered is wrong.</p>
+                </div>
+                <div class="actions">
+                    <div class="ui positive right labeled icon button">
+                        OK
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>

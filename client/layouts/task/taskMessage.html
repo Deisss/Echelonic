@@ -1,0 +1,43 @@
+<template name="taskMessage">
+    <div class="item taskMessage {{#if active _id}}active{{/if}} {{#if isOld .}}old{{/if}}" data-id="{{_id}}">
+        <div class="right floated content">
+            {{#if isDone .}}
+                <div class="ui green horizontal label">Done</div>
+            {{else}}
+                {{#if isInProgress .}}
+                    <div class="ui yellow horizontal label">In progress</div>
+                {{/if}}
+            {{/if}}
+
+            {{#if hasDue .}}
+                <div class="ui horizontal label datepicker">{{momentDate dueAt}}</div>
+            {{else}}
+                <div class="ui horizontal label datepicker calendar" data-content="Choose a due date" data-variation="inverted">
+                    <i class="calendar icon"></i>
+                </div>
+            {{/if}}
+
+            {{#if assignId}}
+                <img class="ui avatar image" src="http://www.gravatar.com/avatar/{{md5PrettyEmail assign}}?&s=26&d=identicon" alt="avatar" data-content="{{prettyEmail assign}}" data-variation="inverted">
+            {{else}}
+                <div class="ui horizontal label noUser" data-content="No user assigned to this task" data-variation="inverted">
+                    <i class="user icon"></i>
+                </div>
+            {{/if}}
+        </div>
+
+        <div class="content">
+            <div class="ui checkbox">
+                <input type="checkbox" tabindex="0" class="hidden" />
+            </div>
+
+            <div class="taskContent">
+                {{title}}
+            </div>
+
+            <a class="ui {{priorityToColor priority}} right corner label" data-content="Priority: {{priorityToText priority}}" data-variation="inverted">
+                {{priorityToShortText priority}}
+            </a>
+        </div>
+    </div>
+</template>

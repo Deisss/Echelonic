@@ -1,0 +1,131 @@
+<template name="taskEdit">
+    <div id="taskSee" class="ui grid">
+        {{> menuProject project=project showActivities=1 showChat=1 }}
+
+        <!-- content -->
+        <div class="twelve wide column contentMenuShadow">
+            {{> menuEchelon project=project.title echelon=echelon.title child=task.title }}
+
+            <div class="ui grid">
+                <div class="eight wide column">
+                    <!-- Tasks list -->
+                    <div class="ui divided selection list">
+                        {{#if project.isAdmin}}
+                            <div class="item formAddTask">
+                                <div class="ui label newTask">
+                                    <i class="add circle icon"></i>
+                                    <a>Add a new task</a>
+                                </div>
+                                <div class="ui form">
+                                    <div class="field">
+                                        <div class="ui right action input">
+                                            <div class="ui button datepicker primary">
+                                                <i class="calendar icon"></i>
+                                            </div>
+                                            <!-- The task by itself -->
+                                            <input name="title" type="text" placeholder="New task" />
+                                            <!-- priority -->
+                                            <div class="ui dropdown button priority">
+                                                <div class="text">Priority</div>
+                                                <i class="dropdown icon"></i>
+                                                <div class="menu">
+                                                    <div class="item">
+                                                        <input type="hidden" name="priority" value="0" />
+                                                        <a class="ui circular empty label grey"></a>
+                                                        None
+                                                    </div>
+                                                    <div class="item">
+                                                        <input type="hidden" name="priority" value="1" />
+                                                        <a class="ui circular empty label olive"></a>
+                                                        Low
+                                                    </div>
+                                                    <div class="item">
+                                                        <input type="hidden" name="priority" value="2" />
+                                                        <a class="ui circular empty label yellow"></a>
+                                                        Middle
+                                                    </div>
+                                                    <div class="item">
+                                                        <input type="hidden" name="priority" value="3" />
+                                                        <a class="ui circular empty label orange"></a>
+                                                        High
+                                                    </div>
+                                                    <div class="item">
+                                                        <input type="hidden" name="priority" value="4" />
+                                                        <a class="ui circular empty label red"></a>
+                                                        Urgent
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- assigned to given user -->
+                                            <div class="ui dropdown button assign">
+                                                <div class="text">Assigned to</div>
+                                                <i class="dropdown icon"></i>
+                                                <div class="menu">
+                                                    {{#each project.users}}
+                                                        <div class="item">
+                                                            <input type="hidden" name="assignId" value="{{_id}}" />
+                                                            <img class="ui avatar image" src="http://www.gravatar.com/avatar/{{md5PrettyEmail .}}?&s=40&d=identicon" alt="avatar" />
+                                                            {{prettyFindUser _id}}
+                                                        </div>
+                                                    {{/each}}
+                                                </div>
+                                            </div>
+                                            <div type="submit" class="ui button primary taskCreate">
+                                                <i class="plus icon"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/if}}
+                        {{#each tasks}}
+                            {{> taskMessage }}
+                        {{else}}
+                        <div class="text-center noTask">
+                            You don't have any task in this echelon.
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <div class="eight wide column">
+                    <div class="taskShow">
+                        <p>EDIT</p>
+
+                        <h2>Comments</h2>
+                        <div class="ui comments">
+                            {{> commentBloc comments=comments }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{#if project.isAdmin}}
+        <!-- Modals -->
+        <!-- Error task empty -->
+        <div id="modal-task-empty" class="ui small modal">
+            <div class="header">
+                Error
+            </div>
+            <div class="content">
+                <p>You must provide a sentence for the task to do.</p>
+            </div>
+            <div class="actions">
+                <div class="ui positive right labeled icon button">
+                    OK
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</template>
