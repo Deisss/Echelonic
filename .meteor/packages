@@ -1,0 +1,29 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+iron:router
+zimme:active-route
+manuelschoebel:ms-seo
+meteorhacks:subs-manager
+manuelschoebel:wait-on-lib
+less
+dburles:collection-helpers
+aldeed:collection2
+matb33:collection-hooks
+accounts-password
+semantic:ui-css
+useraccounts:semantic-ui
+fastclick
+matteodem:easy-security
+underscore
+useraccounts:iron-routing
+mizzao:user-status
+momentjs:moment
+tmeasday:publish-counts
+mrt:flash-messages
+chart:chart
+reywood:publish-composite
